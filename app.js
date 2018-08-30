@@ -4,6 +4,12 @@ app.controller('myController', function ($scope) {
         name: 'Freewind',
         email: 'test@test.com'
     }
+    $scope.change = function () {
+        $scope.userInfo = {
+            name: '111',
+            email: '111'
+        }
+    }
 })
 app.directive('myDirective', function () {
     return {
@@ -12,15 +18,16 @@ app.directive('myDirective', function () {
             directiveUserInfo: '<userInfo'
         },
         template: '<div>' +
-            '<h3>Inside myDirective</h3>' +
-            '<div>' +
-            '   <label>Name:</label>' +
-            '   <input ng-model="directiveUserInfo.name">' +
-            '</div>' +
-            '<div>directive.directiveUserInfo: <span class="highlight">{{ directiveUserInfo }}</span></div>' +
+            '{{ directiveUserInfo }}' +
+            '<button ng-click="change()">Change from directive</button> ' +
             '</div>',
         controller: function ($scope) {
-            console.log('directiveUserInfo: ' + JSON.stringify($scope.directiveUserInfo))
+            $scope.change = function () {
+                $scope.directiveUserInfo = {
+                    name: '222',
+                    email: '222'
+                }
+            }
         }
     }
 })

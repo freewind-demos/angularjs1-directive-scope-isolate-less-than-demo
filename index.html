@@ -1,31 +1,10 @@
 <html>
-<head>
-    <style>
-        .controller {
-            border: 1px solid green;
-            padding: 10px;
-        }
-
-        .directive {
-            border: 1px solid red;
-            margin: 10px;
-            padding: 10px;
-        }
-
-        .highlight {
-            padding: 10px;
-            color: green;
-        }
-    </style>
-</head>
 <body ng-app="app">
 <div ng-controller="myController" class="controller">
-    <h3>Outside</h3>
-    <div>
-        <label>Name:</label>
-        <input ng-model="userInfo.name"/>
+    <div>{{ userInfo }}
+        <button ng-click="change()">Change from parent</button>
     </div>
-    <div>myController.userInfo: <span class="highlight">{{ userInfo }}</span></div>
+    <hr>
     <div class="directive">
         <my-directive user-info="userInfo"></my-directive>
     </div>
